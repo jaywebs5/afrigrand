@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Afrigrand Studios — Business Consultancy & Support Services. Company registration, tax clearance, marketing, funding, and coaching for African entrepreneurs. Based in Pretoria.">
+  <meta name="keywords" content="business consultancy, company registration, tax clearance, business coaching, funding, Pretoria, South Africa">
+  <meta property="og:title" content="Afrigrand Studios | Business Consultancy & Support Services">
+  <meta property="og:description" content="Empowering entrepreneurs across Africa — from registration to funding. Expert business support in Pretoria.">
+  <meta property="og:image" content="https://i.postimg.cc/Xqjm85nK/IMG-20260505-WA0008.jpg">
+  <meta property="og:type" content="website">
+  <title>Afrigrand Studios | Blue & White Business Consultancy</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- External libraries for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e2a3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    /* Blue & White + Orange accents */
+    :root {
+      --deep-blue: #0A2647;
+      --bright-blue: #1E4A7A;
+      --accent-blue: #2C7DA0;
+      --sky-blue: #E6F2F9;
+      --pure-white: #FFFFFF;
+      --soft-gray: #F8FAFC;
+      --dark-text: #0F2C48;
+      --orange-accent: #F97316;
+      --orange-light: #FFF7ED;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== SCROLL REVEAL ANIMATIONS ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ========== BACK TO TOP BUTTON ========== */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      width: 50px;
+      height: 50px;
+      background: var(--orange-accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background: var(--deep-blue);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(10, 38, 71, 0.3);
+    }
+
+    /* ========== WHATSAPP FLOAT BUTTON ========== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 100px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: pulse-whatsapp 2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+    }
+    @keyframes pulse-whatsapp {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    @media (max-width: 780px) {
+      .whatsapp-float { right: 20px; bottom: 90px; }
+      .back-to-top { right: 20px; bottom: 30px; }
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      background: var(--pure-white);
+      box-shadow: 0 2px 12px rgba(10, 38, 71, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--sky-blue);
+    }
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-img {
+      height: 100px;
+      width: auto;
+      border-radius: 50%;
+      display: block;
+      box-shadow: 0 4px 12px rgba(10,38,71,0.12);
+    }
+    .logo p {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--bright-blue);
+      letter-spacing: 0.5px;
+      border-left: 2px solid var(--orange-accent);
+      padding-left: 14px;
+      max-width: 170px;
+      line-height: 1.3;
+    }
+    .logo p span {
+      color: var(--orange-accent);
+      font-weight: 700;
+    }
+    .nav-links a {
+      margin-left: 32px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--deep-blue);
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-links a:hover {
+      border-bottom-color: var(--orange-accent);
+      color: var(--orange-accent);
+    }
+    .btn-outline-nav {
+      background: transparent;
+      border: 1.5px solid var(--bright-blue);
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--bright-blue);
+      transition: 0.2s;
+    }
+    .btn-outline-nav:hover {
+      background: var(--bright-blue);
+      color: white;
+      border-color: var(--bright-blue);
+    }
+    @media (max-width: 700px) {
+      .nav-wrapper { flex-direction: column; gap: 12px; }
+      .nav-links a { margin: 0 12px; }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: linear-gradient(135deg, #F0F8FF 0%, #FFFFFF 100%);
+      padding: 80px 0 100px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--orange-accent);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--deep-blue);
+      margin-bottom: 16px;
+    }
+    .hero-tagline {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--bright-blue);
+      margin-bottom: 20px;
+      border-left: 5px solid var(--orange-accent);
+      padding-left: 20px;
+    }
+    .hero-desc {
+      max-width: 600px;
+      color: #2c3e50;
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--deep-blue);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: white;
+      transition: 0.25s;
+      box-shadow: 0 6px 14px rgba(10,38,71,0.2);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--bright-blue);
+      transform: translateY(-3px);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--deep-blue);
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: var(--deep-blue);
+      transition: 0.2s;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: var(--deep-blue);
+      color: white;
+    }
+    .pdf-contract-btn {
+      background: var(--orange-accent) !important;
+      border: 2px solid var(--orange-accent) !important;
+      color: white !important;
+    }
+    .pdf-contract-btn:hover {
+      background: var(--deep-blue) !important;
+      border-color: var(--deep-blue) !important;
+      color: white !important;
+      transform: translateY(-3px);
+    }
+
+    /* ========== SECTION TITLES ========== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--deep-blue);
+      display: inline-block;
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 25%;
+      width: 50%;
+      height: 4px;
+      background: var(--orange-accent);
+      border-radius: 4px;
+    }
+    .section-sub {
+      color: #4a627a;
+      margin-top: 20px;
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .how-it-works {
+      margin: 70px 0;
+      padding: 50px 0;
+      background: var(--soft-gray);
+      border-radius: 48px;
+    }
+    .steps-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+    }
+    .step-card {
+      flex: 1;
+      min-width: 240px;
+      max-width: 280px;
+      text-align: center;
+      background: white;
+      border-radius: 28px;
+      padding: 36px 22px;
+      position: relative;
+      transition: 0.3s;
+      border: 1px solid #e9f0f5;
+    }
+    .step-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 36px -12px rgba(10,38,71,0.12);
+      border-color: var(--orange-accent);
+    }
+    .step-number {
+      width: 52px;
+      height: 52px;
+      background: var(--orange-accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0 auto 16px;
+    }
+    .step-card h4 {
+      font-weight: 800;
+      color: var(--deep-blue);
+      margin-bottom: 8px;
+    }
+    .step-card p {
+      font-size: 0.82rem;
+      color: #5a6e80;
+      line-height: 1.6;
+    }
+
+    /* ========== ABOUT SECTION ========== */
+    .about-section {
+      margin: 80px 0;
+      position: relative;
+      justify-content: center;
+    }
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--orange-accent);
+      border-radius: 4px;
+      justify-content: center;
+    }
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 56px;
+      align-items: stretch;
+    }
+    .about-text {
+      flex: 1.4;
+      min-width: 320px;
+      background: #FBFDFF;
+      padding: 40px 36px;
+      border-radius: 28px;
+      border: 1px solid #e1edf5;
+    }
+    .about-label {
+      display: inline-block;
+      background: var(--orange-accent);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .about-text h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--deep-blue);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .about-text .lead {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--bright-blue);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .about-text p {
+      color: #3a4e62;
+      margin-bottom: 12px;
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+    .about-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 24px 0;
+      padding: 20px 0;
+      border-top: 1px solid #e1edf5;
+      border-bottom: 1px solid #e1edf5;
+    }
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      min-width: 80px;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--orange-accent);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: #5a6e80;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    /* Owner Card */
+    .owner-card {
+      flex: 0.9;
+      min-width: 290px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F6FBFE 100%);
+      border-radius: 28px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 16px 36px -12px rgba(10,38,71,0.1);
+      border: 1px solid #e1edf5;
+      position: relative;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .owner-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20%;
+      width: 60%;
+      height: 4px;
+      background: var(--orange-accent);
+      border-radius: 0 0 8px 8px;
+    }
+    .owner-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 50px -14px rgba(10,38,71,0.18);
+    }
+    .owner-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 4px solid white;
+      box-shadow: 0 0 0 3px var(--orange-accent), 0 10px 28px rgba(10,38,71,0.18);
+      margin-bottom: 18px;
+    }
+    .owner-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--deep-blue);
+      margin-bottom: 2px;
+    }
+    .owner-title {
+      color: var(--orange-accent);
+      font-weight: 700;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .owner-experience {
+      display: inline-block;
+      background: var(--orange-light);
+      color: var(--deep-blue);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      border: 1px solid #fed7aa;
+    }
+    .owner-card .bio {
+      font-size: 0.84rem;
+      color: #4a5c6c;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .owner-socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .owner-socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--sky-blue);
+      color: var(--deep-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .owner-socials a:hover {
+      background: var(--orange-accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Mission & Vision Cards */
+    .mission-vision {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .mv-card {
+      flex: 1;
+      min-width: 260px;
+      background: white;
+      border-radius: 24px;
+      padding: 30px 24px;
+      border: 1px solid #e1edf5;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--orange-accent);
+      border-radius: 0 4px 4px 0;
+    }
+    .mv-card:hover {
+      box-shadow: 0 12px 28px -8px rgba(10,38,71,0.12);
+      border-color: var(--orange-accent);
+    }
+    .mv-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--orange-light);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--orange-accent);
+      margin-bottom: 14px;
+    }
+    .mv-card h4 {
+      font-weight: 800;
+      color: var(--deep-blue);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .mv-card p {
+      font-size: 0.84rem;
+      color: #4a5c6c;
+      line-height: 1.6;
+    }
+
+    /* ========== SERVICES HORIZONTAL SCROLL ========== */
+    .services-wrapper {
+      margin: 40px 0 50px;
+      position: relative;
+    }
+    .service-row {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 12px 4px 18px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 16px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .service-row::-webkit-scrollbar {
+      display: none;
+    }
+    .service-card {
+      flex: 0 0 240px;
+      background: var(--pure-white);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e9f0f5;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 36px -12px rgba(249, 115, 22, 0.15);
+      border-color: var(--orange-accent);
+    }
+    .card-image {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .service-card:hover .card-image img {
+      transform: scale(1.06);
+    }
+    .card-body {
+      padding: 18px 16px 22px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--deep-blue);
+      line-height: 1.3;
+    }
+    .card-body p {
+      font-size: 0.78rem;
+      color: #5a6e80;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    /* ========== PRICING SECTION ========== */
+    .pricing-section {
+      margin: 80px 0;
+      padding: 60px 0;
+      background: linear-gradient(180deg, #FBFDFF 0%, #FFF7ED 100%);
+      border-radius: 48px;
+    }
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .pricing-card {
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      background: white;
+      border-radius: 28px;
+      padding: 36px 28px;
+      position: relative;
+      transition: all 0.35s ease;
+      border: 1px solid #e9f0f5;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px -12px rgba(249, 115, 22, 0.2);
+      border-color: var(--orange-accent);
+    }
+    .pricing-card.popular {
+      border: 2px solid var(--orange-accent);
+      transform: scale(1.03);
+    }
+    .pricing-card.popular:hover {
+      transform: scale(1.03) translateY(-10px);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange-accent);
+      color: white;
+      padding: 6px 24px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #e1edf5;
+    }
+    .pricing-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--deep-blue);
+      margin-bottom: 12px;
+    }
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--orange-accent);
+      line-height: 1;
+    }
+    .pricing-price small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #7a8fa0;
+    }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+    .pricing-features li {
+      padding: 10px 0;
+      font-size: 0.88rem;
+      color: #4a5c6c;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pricing-features li i {
+      color: var(--orange-accent);
+      font-size: 0.8rem;
+    }
+    .pricing-features li i.fa-times {
+      color: #cbd5e1;
+    }
+    .pricing-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 40px;
+      border: 2px solid var(--deep-blue);
+      background: transparent;
+      color: var(--deep-blue);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-size: 0.9rem;
+    }
+    .pricing-btn:hover {
+      background: var(--deep-blue);
+      color: white;
+    }
+    .pricing-card.popular .pricing-btn {
+      background: var(--orange-accent);
+      color: white;
+      border-color: var(--orange-accent);
+    }
+    .pricing-card.popular .pricing-btn:hover {
+      background: var(--deep-blue);
+      border-color: var(--deep-blue);
+    }
+
+    /* Individual Services Table */
+    .individual-pricing {
+      margin: 60px 0;
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .pricing-table thead {
+      background: var(--deep-blue);
+      color: white;
+    }
+    .pricing-table th {
+      padding: 18px 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .pricing-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #e9f0f5;
+      font-size: 0.88rem;
+      color: #4a5c6c;
+    }
+    .pricing-table tbody tr:hover {
+      background: #F8FAFC;
+    }
+    .pricing-table .price-cell {
+      font-weight: 700;
+      color: var(--deep-blue);
+      text-align: right;
+    }
+    .pricing-table .action-cell {
+      text-align: right;
+    }
+    .table-btn {
+      background: var(--orange-light);
+      color: var(--orange-accent);
+      border: 1px solid #fed7aa;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .table-btn:hover {
+      background: var(--orange-accent);
+      color: white;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials-section {
+      margin: 60px 0;
+      padding: 50px 0;
+      background: linear-gradient(180deg, #FBFDFF 0%, #FFF7ED 100%);
+      border-radius: 48px;
+    }
+    .testimonials-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+    }
+    .testimonial-card {
+      flex: 1;
+      min-width: 300px;
+      max-width: 370px;
+      background: white;
+      border-radius: 28px;
+      padding: 32px 26px;
+      position: relative;
+      border: 1px solid #e9f0f5;
+      transition: 0.3s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 32px -10px rgba(10,38,71,0.1);
+      border-color: var(--orange-accent);
+    }
+    .testimonial-card .quote-icon {
+      font-size: 2.5rem;
+      color: var(--orange-accent);
+      opacity: 0.3;
+      position: absolute;
+      top: 16px;
+      right: 22px;
+    }
+    .testimonial-card .stars {
+      color: #F59E0B;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+    .testimonial-card p.testimonial-text {
+      font-size: 0.88rem;
+      color: #4a5c6c;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testimonial-author .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--sky-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--deep-blue);
+      font-size: 1.1rem;
+    }
+    .testimonial-author .author-info h5 {
+      font-weight: 700;
+      color: var(--deep-blue);
+      font-size: 0.9rem;
+    }
+    .testimonial-author .author-info span {
+      font-size: 0.72rem;
+      color: #7a8fa0;
+    }
+
+    /* ========== FAQ SECTION ========== */
+    .faq-section {
+      margin: 60px 0;
+    }
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #e9f0f5;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .faq-item:hover {
+      border-color: var(--orange-accent);
+    }
+    .faq-question {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: var(--deep-blue);
+      font-size: 0.95rem;
+      user-select: none;
+    }
+    .faq-question i {
+      transition: transform 0.3s;
+      color: var(--orange-accent);
+    }
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 24px;
+      font-size: 0.85rem;
+      color: #5a6e80;
+      line-height: 1.7;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+
+    /* ========== EMPOWER BANNER ========== */
+    .empower-banner {
+      background: linear-gradient(120deg, #FFF7ED, var(--orange-light));
+      border-radius: 48px;
+      padding: 50px 30px;
+      text-align: center;
+      margin: 60px 0;
+      border: 1px solid #fed7aa;
+    }
+    .empower-banner h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--deep-blue);
+    }
+    .empower-banner p {
+      max-width: 650px;
+      margin: 20px auto 0;
+      color: #2c3e50;
+    }
+
+    /* ========== MAP SECTION ========== */
+    .map-section {
+      margin: 60px 0;
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(10,38,71,0.08);
+      border: 1px solid #e1edf5;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      display: block;
+    }
+
+    /* ========== CONTACT SECTION ========== */
+    .contact-section {
+      background: var(--pure-white);
+      border-radius: 48px;
+      margin: 50px 0 60px;
+      padding: 48px 40px;
+      box-shadow: 0 15px 35px rgba(10,38,71,0.05);
+      border: 1px solid #e1edf5;
+    }
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+    }
+    .contact-info {
+      flex: 1.2;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .contact-icon {
+      width: 54px;
+      height: 54px;
+      background: var(--orange-light);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--orange-accent);
+    }
+    .contact-item h4 {
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--deep-blue);
+    }
+    .address-block {
+      background: #FFF7ED;
+      padding: 18px 22px;
+      border-radius: 28px;
+      margin-top: 20px;
+      border-left: 4px solid var(--orange-accent);
+    }
+    .contact-form {
+      flex: 1;
+      background: #FEFEFE;
+      padding: 28px;
+      border-radius: 32px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+      border: 1px solid #DCEBF2;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 60px;
+      border: 1px solid #cbdde6;
+      font-family: 'Inter', sans-serif;
+      background: white;
+      font-size: 0.9rem;
+    }
+    textarea {
+      border-radius: 28px;
+    }
+    select {
+      border-radius: 60px;
+      appearance: auto;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--orange-accent);
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+    }
+    .submit-btn {
+      background: var(--deep-blue);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .submit-btn:hover {
+      background: var(--orange-accent);
+    }
+
+    /* ========== SIGNATURE MODAL STYLES ========== */
+    .signature-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(4px);
+    }
+    .signature-modal.active {
+      display: flex;
+    }
+    .signature-container {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+    .signature-container h3 {
+      color: var(--deep-blue);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--orange-accent);
+      padding-bottom: 10px;
+    }
+    .signature-pad {
+      border: 2px solid #e1edf5;
+      border-radius: 12px;
+      background: white;
+      margin: 15px 0;
+      cursor: crosshair;
+    }
+    .signature-pad canvas {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+      display: block;
+      touch-action: none;
+    }
+    .sig-buttons {
+      display: flex;
+      gap: 12px;
+      margin: 15px 0;
+    }
+    .sig-buttons button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn-clear-sig {
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .btn-clear-sig:hover {
+      background: #cbd5e1;
+    }
+    .client-details-form input,
+    .client-details-form select {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 8px 0;
+      border: 1px solid #cbdde6;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+    }
+    .client-details-form label {
+      font-weight: 600;
+      color: var(--deep-blue);
+      font-size: 0.85rem;
+      display: block;
+      margin-top: 10px;
+    }
+    .terms-checkbox {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .terms-checkbox input {
+      width: auto;
+      accent-color: var(--orange-accent);
+    }
+    .terms-checkbox label {
+      margin: 0;
+      font-size: 0.85rem;
+    }
+    .view-terms-link {
+      color: var(--orange-accent);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .modal-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .modal-buttons button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 40px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-cancel-modal {
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .btn-cancel-modal:hover {
+      background: #cbd5e1;
+    }
+    .btn-generate-pdf {
+      background: var(--deep-blue);
+      color: white;
+    }
+    .btn-generate-pdf:hover {
+      background: var(--orange-accent);
+    }
+    .btn-generate-pdf:disabled {
+      background: #cbd5e1;
+      color: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--deep-blue);
+      color: #e9f2f9;
+      padding: 40px 0;
+      text-align: center;
+    }
+    footer a {
+      color: #c7e2f5;
+      text-decoration: none;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .footer-logo-img {
+      height: 50px;
+      width: auto;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    .footer-logo p {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin: 10px 0 20px;
+      flex-wrap: wrap;
+    }
+    .footer-socials a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+    }
+    .footer-socials a:hover {
+      background: var(--orange-accent);
+      border-color: var(--orange-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+      color: #fff;
+    }
+    .footer-colors {
+      margin: 20px 0;
+    }
+    .footer-colors span {
+      display: inline-block;
+      width: 32px;
+      height: 5px;
+      background: var(--orange-accent);
+      margin: 0 6px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 780px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero-tagline { font-size: 1.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .contact-section { padding: 32px 20px; }
+      .service-card { flex: 0 0 200px; }
+      .signature-container { padding: 20px; }
+      .pricing-card.popular { transform: scale(1); }
+      .pricing-card.popular:hover { transform: translateY(-10px); }
+      .pricing-table { font-size: 0.75rem; }
+      .pricing-table th, .pricing-table td { padding: 12px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar">
+    <div class="container nav-wrapper">
+      <div class="logo">
+        <img src="https://i.postimg.cc/Xqjm85nK/IMG-20260505-WA0008.jpg" alt="Afrigrand Studios" class="logo-img">
+        <p><span>BUSINESS</span> CONSULTANCY & SUPPORT SERVICES</p>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#services">Expertise</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Connect</a>
+        <a href="#contact" class="btn-outline-nav">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge reveal"><i class="fas fa-chart-line"></i> YOUR GROWTH. OUR PRIORITY.</div>
+      <h1 class="reveal reveal-delay-1">Empowering Entrepreneurs<br>Across Africa</h1>
+      <div class="hero-tagline reveal reveal-delay-2">Business Consulting — from Registration to Funding</div>
+      <p class="hero-desc reveal reveal-delay-3">We provide full-cycle solutions: company registration, tax clearance, marketing, podcasting, business training, and access to funding. Let's build your legacy.</p>
+      <div class="btn-group reveal reveal-delay-4">
+        <a href="#contact" class="btn-primary"><i class="fas fa-calendar-check"></i> Free Consultation</a>
+        <a href="#services" class="btn-secondary"><i class="fas fa-cogs"></i> Our Services</a>
+        <button id="contractBtn" class="btn-secondary pdf-contract-btn"><i class="fas fa-file-signature"></i> Sign Agreement & Get Contract</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <div class="container" id="process">
+    <div class="how-it-works">
+      <div class="section-header reveal">
+        <div class="section-title">How It Works</div>
+        <p class="section-sub">Your journey to business success in 4 simple steps</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">1</div>
+          <h4>Free Consultation</h4>
+          <p>Tell us about your business goals and challenges. We listen and understand your unique needs.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">2</div>
+          <h4>Tailored Strategy</h4>
+          <p>We design a custom action plan — registration, compliance, marketing, or funding support.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">3</div>
+          <h4>Implementation</h4>
+          <p>Our team handles the paperwork, registrations, and setups while keeping you informed.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-4">
+          <div class="step-number">4</div>
+          <h4>Ongoing Support</h4>
+          <p>We stay with you — coaching, mentorship, and access to opportunities for continuous growth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <div class="container about-section" id="about">
+    <div class="section-header reveal">
+      <div class="section-title">About Afrigrand Studios</div>
+      <p class="section-sub">A trusted business consultancy committed to your success</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="about-label">Our Story</span>
+        <h2>Empowering African Entrepreneurs Since Inception</h2>
+        <p class="lead">
+          Afrigrand Studios is more than a consultancy — we are a launchpad for ambitious 
+          business owners across the continent.
+        </p>
+        <p>
+          Founded on the belief that every entrepreneur deserves access to expert guidance, 
+          we provide a comprehensive suite of business services — from legal registration and 
+          tax compliance to strategic marketing, coaching, and funding facilitation. 
+          We don't just advise; we walk the journey with you.
+        </p>
+        <p>
+          Our team combines deep industry knowledge with a genuine passion for seeing African 
+          businesses thrive. Whether you're a startup founder navigating your first registration 
+          or an established SME seeking growth capital, we deliver practical, results-oriented 
+          solutions tailored to your unique goals.
+        </p>
+        <div class="about-stats">
+          <div class="stat-item reveal">
+            <span class="stat-number" data-target="100" data-suffix="+">0+</span>
+            <span class="stat-label">Businesses Served</span>
+          </div>
+          <div class="stat-item reveal reveal-delay-1">
+            <span class="stat-number" data-target="20" data-suffix="+">0+</span>
+            <span class="stat-label">Services Offered</span>
+          </div>
+          <div class="stat-item reveal reveal-delay-2">
+            <span class="stat-number" data-target="100" data-suffix="%">0%</span>
+            <span class="stat-label">Client Satisfaction</span>
+          </div>
+          <div class="stat-item reveal reveal-delay-3">
+            <span class="stat-number" data-target="24" data-suffix="h">0h</span>
+            <span class="stat-label">Response Time</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="owner-card reveal">
+        <img src="https://i.postimg.cc/KYrw6fqV/SKYJ9957-jpg.jpg" alt="Founder & Lead Consultant — Afrigrand Studios" class="owner-img">
+        <h3>Simanga Wiseman</h3>
+        <div class="owner-title">Founder & Lead Consultant</div>
+        <div class="owner-experience"><i class="fas fa-briefcase"></i> 8+ Years Experience</div>
+        <p class="bio">
+          A dedicated business strategist and mentor who has guided numerous entrepreneurs 
+          through the complexities of company formation, compliance, and growth strategy. 
+          Passionate about unlocking Africa's entrepreneurial potential through practical 
+          guidance and unwavering support.
+        </p>
+        <div class="owner-socials">
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com/yourhandle" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/27761482936" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:afrigrandstudios@yahoo.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mission-vision">
+      <div class="mv-card reveal">
+        <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+        <h4>Our Mission</h4>
+        <p>
+          To democratize business success by providing affordable, expert-led consultancy 
+          services that equip African entrepreneurs with the tools, knowledge, and resources 
+          to build sustainable, compliant, and profitable enterprises.
+        </p>
+      </div>
+      <div class="mv-card reveal reveal-delay-1">
+        <div class="mv-icon"><i class="fas fa-eye"></i></div>
+        <h4>Our Vision</h4>
+        <p>
+          To become Africa's most trusted business support partner — bridging the gap 
+          between entrepreneurial ambition and tangible success, one business at a time.
+        </p>
+      </div>
+      <div class="mv-card reveal reveal-delay-2">
+        <div class="mv-icon"><i class="fas fa-gem"></i></div>
+        <h4>Our Values</h4>
+        <p>
+          <strong>Integrity</strong> · <strong>Excellence</strong> · <strong>Innovation</strong> · <strong>Community</strong><br>
+          These principles guide every client engagement and service we deliver.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SERVICES ==================== -->
+  <div class="container" id="services">
+    <div class="section-header reveal">
+      <div class="section-title">We Specialize In</div>
+      <p class="section-sub">Comprehensive support tailored for African entrepreneurs & SMEs</p>
+    </div>
+    <div class="services-wrapper reveal" id="servicesWrapper"></div>
+  </div>
+
+  <!-- ==================== PRICING SECTION ==================== -->
+  <div class="container pricing-section" id="pricing">
+    <div class="section-header reveal">
+      <div class="section-title">Our Pricing Plans</div>
+      <p class="section-sub">Transparent pricing designed for businesses at every stage</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="pricing-header">
+          <div class="pricing-name">Startup Package</div>
+          <div class="pricing-price">R1,850</div>
+          <small>One-time payment</small>
+        </div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check-circle"></i> Company Registration (CIPC)</li>
+          <li><i class="fas fa-check-circle"></i> SARS Tax Clearance</li>
+          <li><i class="fas fa-check-circle"></i> Basic Business Plan Template</li>
+          <li><i class="fas fa-check-circle"></i> Business Name Reservation</li>
+          <li><i class="fas fa-times"></i> CSD Registration</li>
+          <li><i class="fas fa-times"></i> Website Building</li>
+          <li><i class="fas fa-times"></i> Marketing Strategy</li>
+        </ul>
+        <button class="pricing-btn" onclick="document.getElementById('contractBtn').click()">
+          <i class="fas fa-file-signature"></i> Get Started
+        </button>
+      </div>
+
+      <div class="pricing-card popular reveal reveal-delay-2">
+        <div class="popular-badge"><i class="fas fa-star"></i> MOST POPULAR</div>
+        <div class="pricing-header">
+          <div class="pricing-name">Professional Package</div>
+          <div class="pricing-price">R4,500</div>
+          <small>One-time payment</small>
+        </div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check-circle"></i> <strong>Everything in Startup</strong></li>
+          <li><i class="fas fa-check-circle"></i> CSD Registration</li>
+          <li><i class="fas fa-check-circle"></i> Professional Website (5 Pages)</li>
+          <li><i class="fas fa-check-circle"></i> Marketing Strategy Session</li>
+          <li><i class="fas fa-check-circle"></i> Business Profile & Flyer Design</li>
+          <li><i class="fas fa-check-circle"></i> 1 Month Coaching Support</li>
+          <li><i class="fas fa-check-circle"></i> Funding Opportunity Alerts</li>
+        </ul>
+        <button class="pricing-btn" onclick="document.getElementById('contractBtn').click()">
+          <i class="fas fa-rocket"></i> Start Professional
+        </button>
+      </div>
+
+      <div class="pricing-card reveal reveal-delay-3">
+        <div class="pricing-header">
+          <div class="pricing-name">Enterprise Package</div>
+          <div class="pricing-price">R8,500</div>
+          <small>One-time payment</small>
+        </div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check-circle"></i> <strong>Everything in Professional</strong></li>
+          <li><i class="fas fa-check-circle"></i> 3 Months Business Coaching</li>
+          <li><i class="fas fa-check-circle"></i> Full Funding Application Support</li>
+          <li><i class="fas fa-check-circle"></i> Business Account Setup</li>
+          <li><i class="fas fa-check-circle"></i> Advanced Business Plan</li>
+          <li><i class="fas fa-check-circle"></i> Priority Support (24/7)</li>
+          <li><i class="fas fa-check-circle"></i> Quarterly Strategy Reviews</li>
+        </ul>
+        <button class="pricing-btn" onclick="document.getElementById('contractBtn').click()">
+          <i class="fas fa-building"></i> Go Enterprise
+        </button>
+      </div>
+    </div>
+
+    <div class="individual-pricing reveal" style="margin-top: 60px;">
+      <div class="section-header">
+        <div class="section-title" style="font-size: 1.8rem;">Individual Services</div>
+        <p class="section-sub">Need something specific? Choose from our à la carte services</p>
+      </div>
+      
+      <div style="overflow-x: auto;">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Company Registration</strong></td>
+              <td>CIPC registration with name reservation</td>
+              <td class="price-cell">R850 - R1,200</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>SARS Tax Clearance</strong></td>
+              <td>Tax compliance & clearance certificate</td>
+              <td class="price-cell">R650 - R950</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>CSD Registration</strong></td>
+              <td>Central Supplier Database registration</td>
+              <td class="price-cell">R500 - R800</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>Business Plan Writing</strong></td>
+              <td>Professional business plan document</td>
+              <td class="price-cell">R1,500 - R3,500</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>Website Building</strong></td>
+              <td>Basic 5-page business website</td>
+              <td class="price-cell">R2,500 - R4,500</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>Business Coaching</strong></td>
+              <td>Per session (1 hour)</td>
+              <td class="price-cell">R350 - R500</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>Marketing Strategy</strong></td>
+              <td>Strategy session & action plan</td>
+              <td class="price-cell">R800 - R1,500</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>Business Profiles & Flyers</strong></td>
+              <td>Professional design & layout</td>
+              <td class="price-cell">R450 - R850</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>Funding Application</strong></td>
+              <td>Application preparation & submission</td>
+              <td class="price-cell">R1,500 - R3,000</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+            <tr>
+              <td><strong>Business Account Setup</strong></td>
+              <td>Bank account registration assistance</td>
+              <td class="price-cell">R400 - R700</td>
+              <td class="action-cell"><button class="table-btn" onclick="document.getElementById('contractBtn').click()">Book Now</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <div class="container" id="testimonials">
+    <div class="testimonials-section">
+      <div class="section-header reveal">
+        <div class="section-title">What Our Clients Say</div>
+        <p class="section-sub">Real stories from businesses we've helped grow</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Afrigrand Studios made my company registration seamless. They handled everything from CIPC to tax clearance. I'm now fully compliant and confident to pursue government tenders!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">TM</div>
+            <div class="author-info">
+              <h5>Thabo M.</h5>
+              <span>Founder, TM Logistics</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "The business coaching program transformed how I approach my salon business. Within 6 months, my revenue doubled and I hired two new employees."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">PN</div>
+            <div class="author-info">
+              <h5>Precious N.</h5>
+              <span>Owner, Glamour Hair Studio</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Thanks to Afrigrand, I accessed funding I didn't know existed. Their team helped me prepare a winning business plan and connected me to the right opportunities."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DK</div>
+            <div class="author-info">
+              <h5>David K.</h5>
+              <span>CEO, TechSolve Innovations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FAQ ==================== -->
+  <div class="container faq-section" id="faq">
+    <div class="section-header reveal">
+      <div class="section-title">Frequently Asked Questions</div>
+      <p class="section-sub">Quick answers to common inquiries</p>
+    </div>
+    <div class="faq-grid reveal">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How long does company registration take?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Company registration with CIPC typically takes 3-5 working days. We handle the entire process — name reservation, registration documents, and final certificate delivery.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What documents do I need for tax clearance?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>You'll need your company registration certificate, proof of address, ID copy, and recent financial statements. We guide you through every document and submit on your behalf to SARS.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do you help with funding applications?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! We assist with business plan preparation, financial projections, and identifying suitable funding opportunities — from government grants to private investors.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can you help if my business is already registered?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutely. We offer marketing, coaching, compliance updates, website building, and access to growth opportunities for existing businesses at any stage.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What are your consultation fees?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Your first consultation is completely free. After understanding your needs, we provide a transparent quote with no hidden costs. Service packages are tailored to your budget.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== EMPOWER BANNER ==================== -->
+  <div class="container">
+    <div class="empower-banner reveal">
+      <i class="fas fa-handshake" style="font-size: 2.8rem; color: var(--orange-accent); margin-bottom: 18px;"></i>
+      <h3>EMPOWERING ENTREPRENEURS ACROSS AFRICA</h3>
+      <p>Business coaching, mentorship, funding access, workshops, and strategic advisory — all in one place. Your vision, our expertise.</p>
+    </div>
+  </div>
+
+  <!-- ==================== MAP SECTION ==================== -->
+  <div class="container reveal">
+    <div class="section-header">
+      <div class="section-title">Find Us</div>
+      <p class="section-sub">Visit our office in Sunnyside, Pretoria</p>
+    </div>
+    <div class="map-section">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.712505667887!2d28.19902831501971!3d-25.745231883636555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9561e5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2s30%20Rissik%20St%2C%20Sunnyside%2C%20Pretoria%2C%200001!5e0!3m2!1sen!2sza!4v1699999999999" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Afrigrand Studios Office Location">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- ==================== CONTACT ==================== -->
+  <div class="container" id="contact">
+    <div class="contact-section reveal">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 style="font-size: 1.9rem; font-weight: 800; margin-bottom: 28px; color: var(--deep-blue);">Let's talk <span style="color: var(--orange-accent);">growth</span></h2>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div><h4>Call / WhatsApp</h4><p>076 148 2936</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div><h4>Email</h4><p>afrigrandstudios@yahoo.com</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h4>Head Office</h4><p>30 Rissik Street, 703 Theatre Gardens, Sunnyside, Pretoria 0001</p></div>
+          </div>
+          <div class="address-block">
+            <i class="fas fa-building" style="color: var(--orange-accent); margin-right: 8px;"></i> <strong>Visit us:</strong> Professional consultation by appointment. Let's accelerate your business.
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="font-weight: 700; margin-bottom: 10px;"><i class="fas fa-paper-plane" style="color: var(--orange-accent);"></i> Request a callback</h3>
+          <p style="margin-bottom: 24px; font-size: 0.9rem;">Fill the form — we'll respond within 24h</p>
+          <form id="contactForm">
+            <div class="form-group"><input type="text" placeholder="Full name" required></div>
+            <div class="form-group"><input type="email" placeholder="Email address" required></div>
+            <div class="form-group"><input type="tel" placeholder="Phone number"></div>
+            <div class="form-group"><textarea rows="3" placeholder="Tell us about your business needs..."></textarea></div>
+            <button type="submit" class="submit-btn"><i class="fas fa-rocket"></i> Send message</button>
+          </form>
+          <p style="font-size: 0.7rem; margin-top: 18px;">We respect your privacy. No spam.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SIGNATURE MODAL ==================== -->
+  <div id="signatureModal" class="signature-modal">
+    <div class="signature-container">
+      <h3><i class="fas fa-file-signature"></i> Sign Your Agreement</h3>
+      <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">Please review the terms below and sign to confirm your agreement.</p>
+      
+      <div class="client-details-form">
+        <label>Full Name *</label>
+        <input type="text" id="clientFullName" placeholder="Enter your full name" required>
+        
+        <label>Email Address *</label>
+        <input type="email" id="clientEmail" placeholder="Enter your email address" required>
+        
+        <label>Phone Number *</label>
+        <input type="tel" id="clientPhone" placeholder="Enter your phone number" required>
+        
+        <label>Company Name (Optional)</label>
+        <input type="text" id="clientCompany" placeholder="Your company name">
+        
+        <label>Selected Package</label>
+        <select id="selectedPackage">
+          <option value="Startup">Startup Package - R1,850</option>
+          <option value="Professional" selected>Professional Package - R4,500</option>
+          <option value="Enterprise">Enterprise Package - R8,500</option>
+        </select>
+      </div>
+      
+      <label style="font-weight: 600; color: var(--deep-blue);">Your Signature *</label>
+      <div class="signature-pad">
+        <canvas id="signatureCanvas" width="400" height="200" style="width:100%; height:200px; border: 1px solid #ddd; border-radius: 8px;"></canvas>
+      </div>
+      <div class="sig-buttons">
+        <button class="btn-clear-sig" id="clearSignature"><i class="fas fa-eraser"></i> Clear</button>
+      </div>
+      
+      <div class="terms-checkbox">
+        <input type="checkbox" id="acceptTerms">
+        <label>I agree to the <span class="view-terms-link" id="viewTermsLink">Terms & Conditions</span></label>
+      </div>
+      
+      <div class="modal-buttons">
+        <button class="btn-cancel-modal" id="cancelModalBtn">Cancel</button>
+        <button class="btn-generate-pdf" id="generateContractBtn" disabled><i class="fas fa-file-pdf"></i> Generate Contract PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TERMS & CONDITIONS POPUP ==================== -->
+  <div id="termsPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; justify-content: center; align-items: center;">
+    <div style="background: white; max-width: 600px; width: 90%; max-height: 80vh; border-radius: 24px; padding: 30px; overflow-y: auto;">
+      <h3 style="color: var(--deep-blue);">Terms & Conditions</h3>
+      <div style="margin: 20px 0; font-size: 0.85rem; line-height: 1.6;">
+        <p><strong>1. Services</strong><br>Afrigrand Studios agrees to provide the selected business consultancy services as described in the package chosen.</p>
+        <p><strong>2. Payment Terms</strong><br>Payment is due upon signing this agreement. For packages above R5,000, a 50% deposit is required with the balance due upon completion.</p>
+        <p><strong>3. Refund Policy</strong><br>Full refund within 7 days if no work has commenced.</p>
+        <p><strong>4. Timeline</strong><br>Company registration: 3-5 business days.</p>
+        <p><strong>5. Client Responsibilities</strong><br>Client must provide all required documentation promptly.</p>
+        <p><strong>6. Confidentiality</strong><br>All client information is kept strictly confidential.</p>
+        <p><strong>7. Liability</strong><br>Afrigrand Studios is not liable for losses resulting from third-party delays.</p>
+        <p><strong>8. Governing Law</strong><br>This agreement is governed by the laws of South Africa.</p>
+        <p><strong>9. Dispute Resolution</strong><br>Any disputes will first attempt mediation before legal proceedings.</p>
+        <p><strong>10. Acceptance</strong><br>By signing this document, you confirm you have read and agree to all terms.</p>
+      </div>
+      <button id="closeTermsBtn" style="width: 100%; padding: 12px; background: var(--orange-accent); color: white; border: none; border-radius: 40px; cursor: pointer; font-weight: 700;">Close</button>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <img src="https://i.postimg.cc/Xqjm85nK/IMG-20260505-WA0008.jpg" alt="Afrigrand Studios" class="footer-logo-img">
+        <p>AFRIGRAND STUDIOS</p>
+      </div>
+      <p style="font-weight: 600; margin-bottom: 6px; font-size: 0.9rem;">
+        Business Consultancy & Support Services
+      </p>
+      <p style="font-size: 0.82rem; opacity: 0.85; margin-bottom: 10px;">
+        📍 30 Rissik Street, 703 Theatre Gardens, Sunnyside, Pretoria 0001 &nbsp;|&nbsp; 
+        📞 076 148 2936 &nbsp;|&nbsp; 
+        ✉️ afrigrandstudios@yahoo.com
+      </p>
+      <p style="font-weight: 700; font-size: 0.9rem; margin: 16px 0 10px; letter-spacing: 1px; text-transform: uppercase;">Follow Us</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/afrigrand_studios" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/27761482936" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@yourhandle" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://youtube.com/@yourhandle" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-colors">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <p style="opacity: 0.7; font-size: 0.75rem;">
+        © 2026 Afrigrand Studios | Your Growth. Our Priority. — Empowering Entrepreneurs Across Africa
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== BACK TO TOP BUTTON ==================== -->
+  <button class="back-to-top" id="backToTop" title="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ==================== WHATSAPP FLOAT BUTTON ==================== -->
+  <a href="https://wa.me/27761482936?text=Hello%20Afrigrand%20Studios!%20I%20would%20like%20to%20inquire%20about%20your%20business%20services." 
+     class="whatsapp-float" 
+     target="_blank" 
+     title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+
+<script>
+    // ============================================
+    // SERVICES RENDERING
+    // ============================================
+    const servicesList = [
+      { name: "Administration", img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&h=350&fit=crop&q=80" },
+      { name: "Company Registration", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=350&fit=crop&q=80" },
+      { name: "CSD Registration", img: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=500&h=350&fit=crop&q=80" },
+      { name: "SARS Tax Clearance", img: "https://www.skillsportal.co.za/sites/default/files/styles/max_2600x2600/public/images/Ryan%20Cloete/SARS-laptop_2.jpg?itok=eBWQYT42" },
+      { name: "Business Marketing & Promotion", img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=500&h=350&fit=crop&q=80" },
+      { name: "Website Building", img: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Podcasting", img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Information Services", img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Advisory", img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Workshops", img: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Outreaches", img: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Trainings", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=500&h=350&fit=crop&q=80" },
+      { name: "Internet Services", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=350&fit=crop&q=80" },
+      { name: "Photocopying", img: "https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=500&h=350&fit=crop&q=80" },
+      { name: "Scanning & Emailing", img: "https://images.unsplash.com/photo-1560264280-88b68371db39?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Coaching and Mentorship", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=350&fit=crop&q=80" },
+      { name: "Access to Funding Opportunities", img: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Account Registration", img: "https://images.unsplash.com/photo-1560472355-536de3962603?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Planning", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=350&fit=crop&q=80" },
+      { name: "Business Profiles and Flyers", img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=350&fit=crop&q=80" }
+    ];
+
+    let scrollIntervals = [];
+
+    function renderServices() {
+      const wrapper = document.getElementById('servicesWrapper');
+      if (!wrapper) return;
+      wrapper.innerHTML = '';
+      
+      scrollIntervals.forEach(interval => clearInterval(interval));
+      scrollIntervals = [];
+      
+      const midpoint = Math.ceil(servicesList.length / 2);
+      const row1Items = servicesList.slice(0, midpoint);
+      const row2Items = servicesList.slice(midpoint);
+      
+      function createRow(items, rowIndex) {
+        const row = document.createElement('div');
+        row.className = 'service-row';
+        row.setAttribute('data-row', rowIndex);
+        
+        items.forEach(service => {
+          const card = document.createElement('div');
+          card.className = 'service-card';
+          card.innerHTML = `
+            <div class="card-image">
+              <img src="${service.img}" alt="${service.name}" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>${service.name}</h3>
+              <p>Professional support & expert guidance — tailored for your business success.</p>
+            </div>
+          `;
+          row.appendChild(card);
+        });
+        
+        row.addEventListener('mouseenter', () => {
+          row.style.animationPlayState = 'paused';
+        });
+        row.addEventListener('mouseleave', () => {
+          row.style.animationPlayState = 'running';
+        });
+        row.addEventListener('touchstart', () => {
+          row.style.animationPlayState = 'paused';
+        });
+        row.addEventListener('touchend', () => {
+          setTimeout(() => {
+            row.style.animationPlayState = 'running';
+          }, 2000);
+        });
+        
+        return row;
+      }
+      
+      const row1 = createRow(row1Items, 0);
+      const row2 = createRow(row2Items, 1);
+      
+      wrapper.appendChild(row1);
+      wrapper.appendChild(row2);
+      
+      startAutoScroll(row1, 0);
+      startAutoScroll(row2, 1);
+    }
+    
+    function startAutoScroll(row, rowIndex) {
+      const direction = rowIndex % 2 === 0 ? 1 : -1;
+      const speed = 0.8;
+      
+      function scroll() {
+        if (row.style.animationPlayState === 'paused') return;
+        row.scrollLeft += direction * speed;
+        const maxScroll = row.scrollWidth - row.clientWidth;
+        if (direction === 1 && row.scrollLeft >= maxScroll) {
+          row.scrollLeft = 0;
+        } else if (direction === -1 && row.scrollLeft <= 0) {
+          row.scrollLeft = maxScroll;
+        }
+      }
+      
+      const interval = setInterval(scroll, 30);
+      scrollIntervals.push(interval);
+    }
+
+    // Counter Animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = 2000;
+        const startTime = performance.now();
+        const startValue = 0;
+        
+        function updateCounter(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+          const currentValue = Math.floor(easedProgress * (target - startValue) + startValue);
+          counter.textContent = currentValue + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          }
+        }
+        
+        requestAnimationFrame(updateCounter);
+      });
+    }
+
+    // Scroll Reveal
+    function handleScrollReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    // FAQ Accordion
+    function setupFAQ() {
+      const faqItems = document.querySelectorAll('.faq-question');
+      faqItems.forEach(question => {
+        question.addEventListener('click', () => {
+          const faqItem = question.parentElement;
+          const isActive = faqItem.classList.contains('active');
+          
+          document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+          
+          if (!isActive) {
+            faqItem.classList.add('active');
+          }
+        });
+      });
+    }
+
+    // Back to Top
+    function setupBackToTop() {
+      const backToTopBtn = document.getElementById('backToTop');
+      if (!backToTopBtn) return;
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ============================================
+    // WHATSAPP NOTIFICATION FUNCTIONS
+    // ============================================
+    
+    function sendClientDetailsToAdmin(clientName, clientEmail, clientPhone, clientCompany, selectedPackage, contractId) {
+      const adminNumber = '27761482936';
+      
+      const packages = {
+        Startup: 'R1,850',
+        Professional: 'R4,500', 
+        Enterprise: 'R8,500'
+      };
+      
+      let adminMessage = '🔔 *NEW CLIENT CONTRACT SIGNED* 🔔%0A%0A';
+      adminMessage += '*Contract ID:* ' + contractId + '%0A%0A';
+      adminMessage += '*Client Details:*%0A';
+      adminMessage += '👤 Name: ' + encodeURIComponent(clientName) + '%0A';
+      adminMessage += '📧 Email: ' + encodeURIComponent(clientEmail) + '%0A';
+      adminMessage += '📞 Phone: ' + encodeURIComponent(clientPhone) + '%0A';
+      if (clientCompany) adminMessage += '🏢 Company: ' + encodeURIComponent(clientCompany) + '%0A';
+      adminMessage += '%0A*Selected Package:*%0A';
+      adminMessage += '📦 ' + selectedPackage + ' Package%0A';
+      adminMessage += '💰 Price: ' + packages[selectedPackage] + '%0A%0A';
+      adminMessage += '⏰ Signed on: ' + new Date().toLocaleString('en-ZA') + '%0A%0A';
+      adminMessage += '---%0A';
+      adminMessage += 'Please follow up with this client within 24 hours.';
+      
+      window.open('https://wa.me/' + adminNumber + '?text=' + adminMessage, '_blank');
+    }
+
+    function sendConfirmationToClient(clientName, clientPhone, selectedPackage, contractId) {
+      const packages = {
+        Startup: 'R1,850',
+        Professional: 'R4,500', 
+        Enterprise: 'R8,500'
+      };
+      
+      let clientMessage = '✅ *Contract Confirmation* ✅%0A%0A';
+      clientMessage += 'Dear ' + encodeURIComponent(clientName) + ',%0A%0A';
+      clientMessage += 'Thank you for choosing Afrigrand Studios!%0A%0A';
+      clientMessage += '*Contract Details:*%0A';
+      clientMessage += '📋 Contract ID: ' + contractId + '%0A';
+      clientMessage += '📦 Package: ' + selectedPackage + '%0A';
+      clientMessage += '💰 Amount: ' + packages[selectedPackage] + '%0A%0A';
+      clientMessage += 'We will contact you within 24 hours to finalize your service agreement.%0A%0A';
+      clientMessage += '*Next Steps:*%0A';
+      clientMessage += '1. Save your contract PDF%0A';
+      clientMessage += '2. Prepare your ID and documents%0A';
+      clientMessage += '3. We will call you to confirm%0A%0A';
+      clientMessage += '📞 Questions? Call/WhatsApp: 076 148 2936%0A%0A';
+      clientMessage += '— Afrigrand Studios Team';
+      
+      const cleanPhone = clientPhone.replace(/[\s\+\-\(\)]/g, '');
+      window.open('https://wa.me/' + cleanPhone + '?text=' + clientMessage, '_blank');
+    }
+
+    // ============================================
+    // PDF CONTRACT GENERATOR WITH SIGNATURE
+    // ============================================
+    let signaturePadContext = null;
+    let isDrawing = false;
+    let lastX = 0, lastY = 0;
+
+    function initSignaturePad() {
+      const canvas = document.getElementById('signatureCanvas');
+      if (!canvas) return;
+      
+      canvas.width = 400;
+      canvas.height = 200;
+      signaturePadContext = canvas.getContext('2d');
+      signaturePadContext.fillStyle = '#ffffff';
+      signaturePadContext.fillRect(0, 0, canvas.width, canvas.height);
+      signaturePadContext.strokeStyle = '#0A2647';
+      signaturePadContext.lineWidth = 2;
+      signaturePadContext.lineCap = 'round';
+      signaturePadContext.lineJoin = 'round';
+      
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseleave', stopDrawing);
+      canvas.addEventListener('touchstart', startDrawingTouch, { passive: false });
+      canvas.addEventListener('touchmove', drawTouch, { passive: false });
+      canvas.addEventListener('touchend', stopDrawing);
+      canvas.addEventListener('touchcancel', stopDrawing);
+    }
+
+    function getCanvasCoords(e) {
+      const canvas = document.getElementById('signatureCanvas');
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      let clientX, clientY;
+      
+      if (e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else if (e.changedTouches && e.changedTouches.length > 0) {
+        clientX = e.changedTouches[0].clientX;
+        clientY = e.changedTouches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+      
+      return {
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY
+      };
+    }
+
+    function startDrawing(e) {
+      e.preventDefault();
+      isDrawing = true;
+      const coords = getCanvasCoords(e);
+      lastX = coords.x;
+      lastY = coords.y;
+      signaturePadContext.beginPath();
+      signaturePadContext.moveTo(lastX, lastY);
+    }
+
+    function draw(e) {
+      e.preventDefault();
+      if (!isDrawing) return;
+      const coords = getCanvasCoords(e);
+      signaturePadContext.lineTo(coords.x, coords.y);
+      signaturePadContext.stroke();
+      lastX = coords.x;
+      lastY = coords.y;
+    }
+
+    function startDrawingTouch(e) {
+      e.preventDefault();
+      isDrawing = true;
+      const coords = getCanvasCoords(e);
+      lastX = coords.x;
+      lastY = coords.y;
+      signaturePadContext.beginPath();
+      signaturePadContext.moveTo(lastX, lastY);
+    }
+
+    function drawTouch(e) {
+      e.preventDefault();
+      if (!isDrawing) return;
+      const coords = getCanvasCoords(e);
+      signaturePadContext.lineTo(coords.x, coords.y);
+      signaturePadContext.stroke();
+      lastX = coords.x;
+      lastY = coords.y;
+    }
+
+    function stopDrawing(e) {
+      if (e) e.preventDefault();
+      isDrawing = false;
+      signaturePadContext.beginPath();
+      checkTermsAndSignature();
+    }
+
+    function clearSignature() {
+      const canvas = document.getElementById('signatureCanvas');
+      if (signaturePadContext && canvas) {
+        signaturePadContext.clearRect(0, 0, canvas.width, canvas.height);
+        signaturePadContext.fillStyle = '#ffffff';
+        signaturePadContext.fillRect(0, 0, canvas.width, canvas.height);
+        signaturePadContext.strokeStyle = '#0A2647';
+        signaturePadContext.lineWidth = 2;
+        signaturePadContext.lineCap = 'round';
+        signaturePadContext.lineJoin = 'round';
+      }
+      checkTermsAndSignature();
+    }
+
+    function isSignatureEmpty() {
+      const canvas = document.getElementById('signatureCanvas');
+      if (!canvas || !signaturePadContext) return true;
+      
+      try {
+        const pixels = signaturePadContext.getImageData(0, 0, canvas.width, canvas.height).data;
+        for (let i = 0; i < pixels.length; i += 4) {
+          if (pixels[i+3] !== 0) return false;
+        }
+      } catch (e) {
+        return true;
+      }
+      return true;
+    }
+
+    async function generateContractPDF() {
+      const clientName = document.getElementById('clientFullName').value.trim();
+      const clientEmail = document.getElementById('clientEmail').value.trim();
+      const clientPhone = document.getElementById('clientPhone').value.trim();
+      const clientCompany = document.getElementById('clientCompany').value.trim();
+      const selectedPackage = document.getElementById('selectedPackage').value;
+      
+      if (!clientName || !clientEmail || !clientPhone) {
+        alert('Please fill in all required fields (Name, Email, Phone)');
+        return;
+      }
+      
+      if (isSignatureEmpty()) {
+        alert('Please provide your signature');
+        return;
+      }
+      
+      if (!document.getElementById('acceptTerms').checked) {
+        alert('Please accept the Terms & Conditions');
+        return;
+      }
+      
+      const generateBtn = document.getElementById('generateContractBtn');
+      const originalText = generateBtn.innerHTML;
+      generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+      generateBtn.disabled = true;
+      
+      try {
+        const signatureDataURL = document.getElementById('signatureCanvas').toDataURL();
+        
+        const logoImg = document.querySelector('.logo-img');
+        let logoBase64 = '';
+        if (logoImg) {
+          try {
+            const response = await fetch(logoImg.src);
+            const blob = await response.blob();
+            logoBase64 = await new Promise(resolve => {
+              const reader = new FileReader();
+              reader.onloadend = () => resolve(reader.result);
+              reader.readAsDataURL(blob);
+            });
+          } catch (err) {
+            console.log('Logo load failed, using fallback');
+            logoBase64 = '';
+          }
+        }
+        
+        const packages = {
+          Startup: { 
+            price: 'R1,850', 
+            features: 'Company Registration (CIPC), SARS Tax Clearance, Basic Business Plan Template, Business Name Reservation' 
+          },
+          Professional: { 
+            price: 'R4,500', 
+            features: 'Everything in Startup + CSD Registration, Professional Website (5 Pages), Marketing Strategy Session, Business Profile & Flyer Design, 1 Month Coaching Support, Funding Opportunity Alerts' 
+          },
+          Enterprise: { 
+            price: 'R8,500', 
+            features: 'Everything in Professional + 3 Months Business Coaching, Full Funding Application Support, Business Account Setup, Advanced Business Plan, Priority Support (24/7), Quarterly Strategy Reviews' 
+          }
+        };
+        
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('en-ZA', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        });
+        const contractId = 'AGS-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+        
+        const pdfContainer = document.createElement('div');
+        pdfContainer.style.position = 'absolute';
+        pdfContainer.style.left = '-9999px';
+        pdfContainer.style.top = '-9999px';
+        pdfContainer.style.width = '800px';
+        pdfContainer.style.backgroundColor = 'white';
+        pdfContainer.style.padding = '40px';
+        pdfContainer.style.fontFamily = "'Inter', 'Segoe UI', Arial, sans-serif";
+        
+        pdfContainer.innerHTML = `
+          <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            .contract-header { text-align: center; border-bottom: 3px solid #F97316; padding-bottom: 20px; margin-bottom: 25px; }
+            .logo-pdf { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; }
+            .contract-title { font-size: 24px; font-weight: 800; color: #0A2647; }
+            .contract-sub { color: #F97316; font-weight: 600; letter-spacing: 1px; }
+            .section { margin-bottom: 20px; }
+            .section-title { font-size: 16px; font-weight: 800; color: #0A2647; border-left: 4px solid #F97316; padding-left: 10px; margin-bottom: 12px; }
+            .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 10px 0; }
+            .info-box { background: #F8FAFC; padding: 12px; border-radius: 12px; font-size: 12px; }
+            .price-box { background: #FFF7ED; padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #fed7aa; }
+            .price { font-size: 28px; font-weight: 800; color: #F97316; }
+            .signature-box { border: 1px solid #ddd; padding: 15px; margin: 15px 0; border-radius: 12px; background: #f9f9f9; font-size: 12px; }
+            .signature-img { max-width: 200px; height: auto; border: 1px solid #ccc; margin-top: 10px; }
+            .terms-box { font-size: 10px; color: #666; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e1edf5; }
+            .footer { text-align: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid #e1edf5; font-size: 10px; color: #7a8fa0; }
+            table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 11px; }
+            th, td { padding: 8px; text-align: left; border-bottom: 1px solid #e1edf5; }
+            th { background: #F8FAFC; font-weight: 700; color: #0A2647; }
+            ul { font-size: 12px; }
+          </style>
+          
+          <div class="contract-header">
+            ${logoBase64 ? '<img src="' + logoBase64 + '" class="logo-pdf" alt="Logo">' : ''}
+            <div class="contract-title">AFRIGRAND STUDIOS</div>
+            <div class="contract-sub">SERVICE AGREEMENT & CONTRACT</div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Contract Details</div>
+            <div class="info-grid">
+              <div class="info-box">
+                <strong>Contract Date:</strong> ${formattedDate}<br>
+                <strong>Contract ID:</strong> ${contractId}
+              </div>
+              <div class="info-box">
+                <strong>Prepared By:</strong> Simanga Wiseman<br>
+                <strong>Position:</strong> Founder & Lead Consultant
+              </div>
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Client Information</div>
+            <div class="info-grid">
+              <div class="info-box">
+                <strong>Full Name:</strong> ${clientName}<br>
+                <strong>Email:</strong> ${clientEmail}<br>
+                <strong>Phone:</strong> ${clientPhone}
+              </div>
+              <div class="info-box">
+                <strong>Company:</strong> ${clientCompany || 'N/A'}<br>
+                <strong>Date:</strong> ${formattedDate}
+              </div>
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Selected Package</div>
+            <div class="price-box">
+              <div style="font-size: 18px; font-weight: 700;">${selectedPackage} Package</div>
+              <div class="price">${packages[selectedPackage].price}</div>
+              <div style="font-size: 12px; margin-top: 8px;">${packages[selectedPackage].features}</div>
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Payment Terms</div>
+            <table>
+              <tr><th>Item</th><th>Amount</th><th>Due Date</th></tr>
+              <tr><td>${selectedPackage} Package</td><td>${packages[selectedPackage].price}</td><td>Upon signing</td></tr>
+            </table>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Services Included</div>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+              <li>✓ Company Registration with CIPC</li>
+              <li>✓ SARS Tax Clearance & Compliance</li>
+              <li>✓ CSD Registration (if applicable)</li>
+              <li>✓ Business Consulting & Advisory</li>
+              <li>✓ Access to Funding Opportunities</li>
+              <li>✓ Business Coaching & Mentorship</li>
+            </ul>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Terms & Conditions</div>
+            <div class="terms-box" style="margin-top: 0;">
+              <p><strong>1. Services:</strong> Afrigrand Studios agrees to provide the selected business consultancy services.</p>
+              <p><strong>2. Payment:</strong> Payment is due upon signing. For packages over R5,000, 50% deposit required.</p>
+              <p><strong>3. Refund Policy:</strong> Full refund within 7 days if no work has commenced.</p>
+              <p><strong>4. Timeline:</strong> Company registration: 3-5 business days.</p>
+              <p><strong>5. Liability:</strong> Not liable for third-party delays (SARS, CIPC, banks).</p>
+              <p><strong>6. Confidentiality:</strong> All client information is strictly confidential.</p>
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Client Signature</div>
+            <div class="signature-box">
+              <div><strong>Signed by:</strong> ${clientName}</div>
+              <div><strong>Date:</strong> ${formattedDate}</div>
+              <div><strong>Signature:</strong></div>
+              <img src="${signatureDataURL}" class="signature-img" alt="Client Signature">
+            </div>
+            <div class="signature-box" style="margin-top: 10px;">
+              <div><strong>Authorized by:</strong> Simanga Wiseman</div>
+              <div><strong>Position:</strong> Founder & Lead Consultant</div>
+              <div><strong>Date:</strong> ${formattedDate}</div>
+            </div>
+          </div>
+          
+          <div class="terms-box">
+            <p><strong>IMPORTANT:</strong> This is a legally binding agreement. By signing this document, you confirm that you have read, understood, and agree to all terms and conditions outlined above.</p>
+          </div>
+          
+          <div class="footer">
+            © ${new Date().getFullYear()} Afrigrand Studios | Business Consultancy & Support Services<br>
+            30 Rissik Street, 703 Theatre Gardens, Sunnyside, Pretoria 0001 | Tel: 076 148 2936
+          </div>
+        `;
+        
+        document.body.appendChild(pdfContainer);
+        
+        const canvas = await html2canvas(pdfContainer, {
+          scale: 2,
+          backgroundColor: '#ffffff',
+          logging: false,
+          allowTaint: true,
+          useCORS: true
+        });
+        
+        document.body.removeChild(pdfContainer);
+        
+        const { jsPDF } = window.jspdf;
+        const imgData = canvas.toDataURL('image/png');
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        let pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        
+        let heightLeft = imgHeight - 297;
+        while (heightLeft > 0) {
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, -heightLeft, imgWidth, imgHeight);
+          heightLeft -= 297;
+        }
+        
+        pdf.save(`Afrigrand_Contract_${clientName.replace(/\s/g, '_')}.pdf`);
+        
+        document.getElementById('signatureModal').classList.remove('active');
+        
+        // Send private notification to admin WhatsApp
+        sendClientDetailsToAdmin(clientName, clientEmail, clientPhone, clientCompany, selectedPackage, contractId);
+        
+        // Send confirmation to client WhatsApp
+        sendConfirmationToClient(clientName, clientPhone, selectedPackage, contractId);
+        
+        alert('✅ Contract generated successfully!\n\nThe PDF has been downloaded.\nA confirmation has been sent to your WhatsApp.\n\nWe will contact you within 24 hours.');
+        
+        // Reset form
+        document.getElementById('clientFullName').value = '';
+        document.getElementById('clientEmail').value = '';
+        document.getElementById('clientPhone').value = '';
+        document.getElementById('clientCompany').value = '';
+        document.getElementById('acceptTerms').checked = false;
+        clearSignature();
+        
+      } catch (error) {
+        console.error('PDF Error:', error);
+        alert('Error generating contract. Please try again. If the problem persists, contact us on WhatsApp: 076 148 2936');
+      } finally {
+        generateBtn.innerHTML = originalText;
+        generateBtn.disabled = true;
+      }
+    }
+
+    function showSignatureModal() {
+      document.getElementById('signatureModal').classList.add('active');
+      initSignaturePad();
+      checkTermsAndSignature();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function hideSignatureModal() {
+      document.getElementById('signatureModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showTermsPopup() {
+      document.getElementById('termsPopup').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function hideTermsPopup() {
+      document.getElementById('termsPopup').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function checkTermsAndSignature() {
+      const acceptTerms = document.getElementById('acceptTerms').checked;
+      const hasSignature = !isSignatureEmpty();
+      const hasClientDetails = document.getElementById('clientFullName').value.trim() &&
+                              document.getElementById('clientEmail').value.trim() &&
+                              document.getElementById('clientPhone').value.trim();
+      const generateBtn = document.getElementById('generateContractBtn');
+      if (generateBtn) {
+        generateBtn.disabled = !(acceptTerms && hasSignature && hasClientDetails);
+      }
+    }
+
+    // ============================================
+    // MAIN INITIALIZATION
+    // ============================================
+    document.addEventListener('DOMContentLoaded', () => {
+      renderServices();
+      setupFAQ();
+      setupBackToTop();
+      
+      handleScrollReveal();
+      
+      let countersAnimated = false;
+      window.addEventListener('scroll', () => {
+        handleScrollReveal();
+        
+        if (!countersAnimated) {
+          const statsSection = document.querySelector('.about-stats');
+          if (statsSection) {
+            const rect = statsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+              animateCounters();
+              countersAnimated = true;
+            }
+          }
+        }
+      });
+
+      // Contact form
+      const form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = form.querySelector('input[type="text"]').value.trim();
+          const email = form.querySelector('input[type="email"]').value.trim();
+          const phone = form.querySelector('input[type="tel"]').value.trim();
+          const message = form.querySelector('textarea').value.trim();
+          
+          // Send to admin WhatsApp
+          const adminNumber = '27761482936';
+          let whatsappMessage = '📩 *NEW ENQUIRY FROM WEBSITE* 📩%0A%0A';
+          whatsappMessage += '*Details:*%0A';
+          whatsappMessage += '👤 Name: ' + encodeURIComponent(name) + '%0A';
+          whatsappMessage += '📧 Email: ' + encodeURIComponent(email) + '%0A';
+          if (phone) whatsappMessage += '📞 Phone: ' + encodeURIComponent(phone) + '%0A';
+          if (message) whatsappMessage += '%0A*Message:*%0A' + encodeURIComponent(message);
+          whatsappMessage += '%0A%0A— Sent from Afrigrand Studios website';
+          
+          window.open('https://wa.me/' + adminNumber + '?text=' + whatsappMessage, '_blank');
+          form.reset();
+          alert('✅ Your message has been sent! We will contact you shortly.');
+        });
+      }
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === "#" || targetId === "") return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Contract button
+      document.getElementById('contractBtn')?.addEventListener('click', showSignatureModal);
+      
+      // Modal controls
+      document.getElementById('cancelModalBtn')?.addEventListener('click', hideSignatureModal);
+      document.getElementById('clearSignature')?.addEventListener('click', clearSignature);
+      document.getElementById('viewTermsLink')?.addEventListener('click', showTermsPopup);
+      document.getElementById('closeTermsBtn')?.addEventListener('click', hideTermsPopup);
+      document.getElementById('generateContractBtn')?.addEventListener('click', generateContractPDF);
+      
+      // Form field listeners
+      ['clientFullName', 'clientEmail', 'clientPhone'].forEach(field => {
+        document.getElementById(field)?.addEventListener('input', checkTermsAndSignature);
+      });
+      document.getElementById('acceptTerms')?.addEventListener('change', checkTermsAndSignature);
+      
+      // Close modal on outside click
+      document.getElementById('signatureModal')?.addEventListener('click', function(e) {
+        if (e.target === this) hideSignatureModal();
+      });
+      
+      // Close terms popup on outside click
+      document.getElementById('termsPopup')?.addEventListener('click', function(e) {
+        if (e.target === this) hideTermsPopup();
+      });
+      
+      // Keyboard shortcut to close modals
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          hideSignatureModal();
+          hideTermsPopup();
+        }
+      });
+    });
+  </script>
+  </body>
+</html>
